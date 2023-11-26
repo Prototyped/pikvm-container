@@ -22,7 +22,7 @@ into an OCI container, as the `Dockerfile` makes obvious.
   Also, `kvmd-otg` creates a USB gadget that, if it still exists the second
   time the daemon starts up, the daemon will attempt to re-create it and
   crash when it fails to do so since it already exists. A remedy is to use
-  [this script](https://github.com/larsks/systemd-usb-gadget/blob/master/remove-gadget.sh)
+  [this script](https://github.com/larsks/systemd-usb-gadget/blob/master/remove-gadget.sh).
 
 ## Host setup
 
@@ -63,9 +63,23 @@ Raspberry Pi 4.
   Microsoft Edge, Opera, Vivaldi, Brave etc., you can usually blind-type
   "thisisunsafe" into the browser tab showing the certificate error to
   accept the certificate.
-  
-  You may be able to supply your own certificate, key and CA certificate
-  (instructions TBD).
+- If you want to use a trusted certificate, you can set up the systemd unit
+  to mount it and the key into the container:
+  ```shell
+  # Substitute a trusted private CA for ca-certificates.crt if that is what you
+  # used to sign the certificate.
+  cat /path/to/server.crt /etc/ssl/certs/ca-certificates.crt > pikvm.crt
+  sudo install -oroot -groot -m0644 pikvm.crt /etc/ssl/certs/pikvm.crt
+  sudo install -oroot -groot -m0600 /path/to/server.key /etc/ssl/certs/private/pikvm.key
+  shred /path/to/server.crt /path/to/server.key
+  rm -f /path/to/server.crt /path/to/server.key
+  sudo install -oroot -groot -m0644 pikvm-container.customcert.service /etc/systemd/system/pikvm-container.service
+  sudo systemctl daemon-reload
+  # Probably better off rebooting though due to caveats mentioned above.
+  sudo systemctl restart pikvm-container
+  ```
+
+  The next time kvmd's nginx comes up, it will use the certificate you provided.
 
 ## Building the image
 
