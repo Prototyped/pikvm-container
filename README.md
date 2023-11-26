@@ -27,8 +27,8 @@ into an OCI container, as the `Dockerfile` makes obvious.
 These instructions assume you are running Raspberry Pi OS or Debian on a
 Raspberry Pi 4.
 
-- To your `/boot/firmware/config.txt` (or `/boot/config.txt`), ensure these
-  lines exist:
+- In your `/boot/firmware/config.txt` (or `/boot/config.txt`), ensure these
+  lines exist, then reboot your Raspberry Pi:
   ```
   # needed if you are using a uvcvideo dongle for HDMI capture
   gpu_mem=256
