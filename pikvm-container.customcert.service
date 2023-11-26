@@ -6,7 +6,7 @@ BindsTo=docker.socket containerd.service
 
 [Service]
 Restart=always
-ExecStartPre=/bin/bash -c "/usr/bin/docker container inspect ghcr.io/prototyped/pikvm:latest 2> /dev/null || exec /usr/bin/docker run -d --rm --name=pikvm --hostname=pikvm -p 443:443 -t --security-opt seccomp=unconfined --privileged -v /var/lib/kvmd/pst:/var/lib/kvmd/pst -v /var/lib/kvmd/msd:/var/lib/kvmd/msd -v /var/log/kvmd:/var/log -v /dev:/dev -v /sys:/sys -v /sys/fs/cgroup/pikvm.scope:/sys/fs/cgroup:rw -v /etc/ssl/certs/pikvm.crt:/etc/kvmd/nginx/ssl/server.crt -v /etc/ssl/private/pikvm.key:/etc/kvmd/nginx/ssl/server.key --init=false --cgroupns=host --tmpfs=/tmp --tmpfs=/run ghcr.io/prototyped/pikvm:latest"
+ExecStartPre=/bin/bash -c "/usr/bin/docker container inspect ghcr.io/prototyped/pikvm:latest 2> /dev/null || exec /usr/bin/docker run -d --name=pikvm --hostname=pikvm -p 443:443 -t --security-opt seccomp=unconfined --privileged -v /var/lib/kvmd/pst:/var/lib/kvmd/pst -v /var/lib/kvmd/msd:/var/lib/kvmd/msd -v /var/log/kvmd:/var/log -v /dev:/dev -v /sys:/sys -v /sys/fs/cgroup/pikvm.scope:/sys/fs/cgroup:rw -v /etc/ssl/certs/pikvm.crt:/etc/kvmd/nginx/ssl/server.crt -v /etc/ssl/private/pikvm.key:/etc/kvmd/nginx/ssl/server.key --init=false --cgroupns=host --tmpfs=/tmp --tmpfs=/run ghcr.io/prototyped/pikvm:latest"
 ExecStart=/usr/bin/docker start -a pikvm
 ExecStop=/usr/bin/docker stop -t 10 pikvm
 
