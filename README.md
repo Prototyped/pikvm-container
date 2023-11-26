@@ -30,8 +30,10 @@ Raspberry Pi 4.
 - To your `/boot/firmware/config.txt` (or `/boot/config.txt`), ensure these
   lines exist:
   ```
-  hdmi_force_hotplug=1
-  gpu_mem=256  # needed if you are using a uvcvideo dongle for HDMI capture
+  # needed if you are using a uvcvideo dongle for HDMI capture
+  gpu_mem=256
+  # needed if you are using a TC358743-based CSI-2 device for HDMI capture
+  dtoverlay=tc358743 
   dtoverlay=dwc2,dr_mode=peripheral
   ```
 - Connect the HDMI output on the computer to control to the Raspberry Pi 4
