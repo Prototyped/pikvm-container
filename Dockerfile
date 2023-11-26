@@ -1,4 +1,4 @@
-FROM scratch
+FROM --platform=linux/arm scratch
 
 ADD pikvm-os.tar.bz2 /
 

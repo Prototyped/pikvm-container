@@ -1,6 +1,6 @@
 # PiKVM container image
 
-This repository contains scripts and a Dockerfile to build an arm64v8 OCI
+This repository contains scripts and a Dockerfile to build a linux/arm OCI
 container image for PiKVM, to be used with a Raspberry Pi 4. There is also
 a systemd unit to run the container as a systemd service and a script to
 help install it.
@@ -32,7 +32,6 @@ Raspberry Pi 4.
 - To your `/boot/firmware/config.txt` (or `/boot/config.txt`), ensure these
   lines exist:
   ```
-  arm_64bit=1
   hdmi_force_hotplug=1
   gpu_mem=256  # needed if you are using a uvcvideo dongle for HDMI capture
   dtoverlay=dwc2,dr_mode=peripheral
