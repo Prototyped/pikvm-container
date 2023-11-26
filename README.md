@@ -15,12 +15,15 @@ into an OCI container, as the `Dockerfile` makes obvious.
   unavailable, as the implementation relies on being able to discover and
   remount a filesystem on local block storage, which isn't easily
   supportable within a container.
-- While it is possible to restart the container, you occasionally might need to
-  reboot before you can use PiKVM again. The `kvmd` daemon within the container
-  occasionally refuses to start as it makes some assumptions about the state
-  of the GPIO chip, which aren't true any more the second time it starts.
-  I have not been able to readily reproduce this issue on container restart,
-  however.
+- While it is possible to restart the container, sometimes the `kvmd` daemon
+  within the container fails to start due to ENOTTY ("inappropriate ioctl
+  for device") on attempting to access a GPIO chip. This is visible if you
+  do
+  ```shell
+  docker exec -it pikvm bash
+  $ journalctl -xeu kvmd
+  ```
+  Usually restarting the container again fixes it.
 
 ## Host setup
 
@@ -75,7 +78,6 @@ Raspberry Pi 4.
   rm -f /path/to/server.crt /path/to/server.key
   sudo install -oroot -groot -m0644 pikvm-container.customcert.service /etc/systemd/system/pikvm-container.service
   sudo systemctl daemon-reload
-  # Probably better off rebooting though due to caveats mentioned above.
   sudo systemctl restart pikvm-container
   ```
 
