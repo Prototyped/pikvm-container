@@ -17,5 +17,5 @@ RUN set -eu; \
 COPY override.yaml /etc/kvmd/
 
 CMD ["/lib/systemd/systemd"]
-VOLUME ["/var/lib/kvmd/pst", "/var/lib/kvmd/mst", "/dev", "/sys", "/sys/fs/cgroup", "/var/log"]
+VOLUME ["/var/lib/kvmd/pst", "/var/lib/kvmd/msd", "/dev", "/sys", "/sys/fs/cgroup", "/var/log"]
 EXPOSE 80/tcp 443/tcp
