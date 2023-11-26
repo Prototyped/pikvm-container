@@ -35,11 +35,11 @@ Raspberry Pi 4.
   dtoverlay=dwc2,dr_mode=peripheral
   ```
 - Connect the HDMI output on the computer to control to the Raspberry Pi 4
-  video capture device. (It is important to refer to [the instructions](https://github.com/larsks/systemd-usb-gadget/blob/master/remove-gadget.sh);
+  video capture device. (It is important to refer to [the instructions](https://github.com/pikvm/pikvm#connecting-the-video-capture);
   for example the daemon will look for a USB Video Class dongle on a specific
   USB port—using a different port simply will result in the dongle not being
   detected.)
-- Connect the USB Type C port to a [power splitter](https://github.com/larsks/systemd-usb-gadget/blob/master/remove-gadget.sh)
+- Connect the USB Type C port to a [power splitter](https://github.com/pikvm/pikvm#hardware-for-v2)
   such that it can receive power from a power adapter, as well as be connected
   to the computer to control. I have had good luck connecting the Raspberry
   Pi 4's Type C port directly to modern laptops' USB Type C ports, as they
