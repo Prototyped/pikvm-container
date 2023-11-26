@@ -66,6 +66,8 @@ Raspberry Pi 4.
   Microsoft Edge, Opera, Vivaldi, Brave etc., you can usually blind-type
   "thisisunsafe" into the browser tab showing the certificate error to
   accept the certificate.
+- The default user name and password to use in the Web UI are admin/admin,
+  the same as in the PiKVM OS image.
 - If you want to use a trusted certificate, you can set up the systemd unit
   to mount it and the key into the container:
   ```shell
