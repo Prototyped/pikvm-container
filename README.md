@@ -15,14 +15,12 @@ into an OCI container, as the `Dockerfile` makes obvious.
   unavailable, as the implementation relies on being able to discover and
   remount a filesystem on local block storage, which isn't easily
   supportable within a container.
-- While it is possible to restart the container, you will probably need to
-  reboot before you can use PiKVM again. The `kvmd` daemon within the
-  container refuses to start as it makes some assumptions about the state
+- While it is possible to restart the container, you occasionally might need to
+  reboot before you can use PiKVM again. The `kvmd` daemon within the container
+  occasionally refuses to start as it makes some assumptions about the state
   of the GPIO chip, which aren't true any more the second time it starts.
-  Also, `kvmd-otg` creates a USB gadget that, if it still exists the second
-  time the daemon starts up, the daemon will attempt to re-create it and
-  crash when it fails to do so since it already exists. A remedy is to use
-  [this script](https://github.com/larsks/systemd-usb-gadget/blob/master/remove-gadget.sh).
+  I have not been able to readily reproduce this issue on container restart,
+  however.
 
 ## Host setup
 

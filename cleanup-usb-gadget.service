@@ -1,0 +1,11 @@
+[Unit]
+Description=Clean up kvmd USB gadget.
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash /usr/local/bin/remove-gadget.sh kvmd
+
+[Install]
+WantedBy=kvmd-otg.service
+
