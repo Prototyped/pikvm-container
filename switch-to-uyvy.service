@@ -1,0 +1,11 @@
+[Unit]
+Description=Switch video0 to UYVY pixel format.
+After=kvmd-tc358743.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/v4l2-ctl -v pixelformat=UYVY
+
+[Install]
+WantedBy=kvmd.service

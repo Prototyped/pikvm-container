@@ -1,3 +1,33 @@
 kvmd:
   msd:
     type: disabled
+    # streamer:
+    #   cmd:
+    #     - /usr/bin/ustreamer
+    #     - --device=/dev/kvmd-video
+    #     - --persistent
+    #     - --dv-timings
+    #     - --format=uyvy
+    #     - --encoder=omx
+    #     - --workers=3
+    #     - --quality=80
+    #     - --resolution={resolution}
+    #     - --desired-fps={desired_fps}
+    #     - --drop-same-frames=30
+    #     - --last-as-blank=0
+    #     - --unix={unix}
+    #     - --unix-rm
+    #     - --unix-mode=0660
+    #     - --exit-on-parent-death
+    #     - --process-name-prefix={process_name_prefix}
+    #     - --notify-parent
+    #     - --no-log-colors
+    #     - --sink=kvmd::ustreamer::jpeg
+    #     - --sink-mode=0660
+    #     - --h264-sink=kvmd::ustreamer::h264
+    #     - --h264-sink-mode=0660
+    #     - --h264-bitrate=200000
+    #     - --h264-gop=125
+    #     desired_fps:
+    #       default: 50
+
