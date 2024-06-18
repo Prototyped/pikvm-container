@@ -9,3 +9,5 @@ kvmd:
       - "--h264-sink-mode=0660"
       - "--h264-bitrate={h264_bitrate}"
       - "--h264-gop={h264_gop}"
+otg:
+  remote_wakeup: true
