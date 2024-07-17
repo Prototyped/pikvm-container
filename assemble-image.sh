@@ -57,14 +57,14 @@ then
 fi
 
 pikvmostarball=pikvm-os.tar.bz2
-imgfilename="${TMPDIR-/tmp}/v2-hdmiusb-rpi4-latest.img"
+imgfilename="${TMPDIR-/var/tmp}/v2-hdmiusb-rpi4-latest.img"
 
 if ! [[ -r "$pikvmostarball" ]]
 then
     if ! [[ -r "$imgfilename" ]]
     then
         curl -fLSo "${imgfilename}.xz" 'https://files.pikvm.org/images/v2-hdmiusb-rpi4-latest.img.xz'
-        xz -d "${imgfilename}.xz"
+        xz -T0 -dc "${imgfilename}.xz" | dd of="$imgfilename" bs=16MiB conv=sparse
         fallocate -d "$imgfilename"
     fi
 
